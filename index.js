@@ -74,7 +74,7 @@ class Person {
     - A car which runs out of `fuel` while driving can't drive any more distance:
         + The `drive` method should return a string "I ran out of fuel at x miles!" x being `odometer`.
 */
-console.log("Task 2: ");
+console.log("Task 2: (complete)");
 
 
 class Car {
@@ -88,13 +88,15 @@ class Car {
     this.tank += gallons;
   }
   drive(distance){
-    if (this.tank <= distance/this.milesPerGallon){
-      this.tank = 0;
-      return `I ran out of fuel at ${this.odometer} miles!`
+    if (this.tank >= distance/this.milesPerGallon) {
+      this.odometer += distance;
+      this.tank -= distance/this.milesPerGallon;
     }
-    this.odometer += distance;
-    this.tank -= (distance/this.milesPerGallon);
-
+    else if (this.tank < distance/this.milesPerGallon) {
+      this.odometer += this.milesPerGallon*this.tank;
+      this.tank = 0;
+      return `I ran out of fuel at ${this.odometer} miles!`;
+    }
   }
 }
 
@@ -116,8 +118,22 @@ console.log("Task 3: ");
 
 
 class Lambdasian {
-
+  constructor(infoObject){
+    this.name = infoObject.name;
+    this.age = infoObject.age;
+    this.location = infoObject.location;
+  }
+  speak(){
+    return `Hello my name is ${this.name}, I am from ${this.location}.`
+  }
 }
+// const Shayne = new Lambdasian({
+//   name: "Shayne",
+//   age: 26,
+//   location: "Nashville"
+// });
+// console.log(Shayne.speak());
+
 
 /*
   TASK 4
@@ -136,8 +152,19 @@ class Lambdasian {
 console.log("Task 4: ");
 
 
-class Instructor {
-
+class Instructor extends Lambdasian{
+  constructor(infoObject){
+    super(infoObject);
+    this.specialty = infoObject.specialty;
+    this.favLanguage = infoObject.favLanguage;
+    this.catchPhrase = infoObject.catchPhrase;
+  }
+  demo(subject){
+    return `Today we are learning about ${subject}`;
+  }
+  grade(student, subject){
+    return `${student.name} receives a perfect score on ${subject}`;
+  }
 }
 
 /*
@@ -158,8 +185,22 @@ class Instructor {
 console.log("Task 5: ");
 
 
-class Student {
-
+class Student extends Lambdasian {
+  constructor(infoObject){
+    super(infoObject);
+    this.previousBackground = infoObject.previousBackground;
+    this.className = infoObject.className;
+    this.favSubjects = infoObject.favSubjects;
+  }
+  listSubjects(){
+    return `Loving ${this.favSubjects}!`;
+  }
+  PRAssignment(subject){
+    return `${this.name} has submitted a PR for ${subject}`; 
+  }
+  sprintChallenge(subject){
+    return `${this.name} has begun spring challenge on ${subject}`;
+  }
 }
 
 /*
@@ -178,8 +219,18 @@ class Student {
 console.log("Task 6: ");
 
 
-class ProjectManager {
-
+class ProjectManager extends Instructor{
+  constructor(infoObject){
+    super(infoObject);
+    this.gradClassName = infoObject.gradClassName;
+    this.favInstructor = infoObject.favInstructor;
+  }
+  standUp(channel){
+    return `${this.name} announces to ${channel}, @channel standy times!`;
+  }
+  debugsCode(student, subject){
+    return `${this.name} debugs ${student.name}'s code on ${subject}`;
+  }
 }
 
 /*
