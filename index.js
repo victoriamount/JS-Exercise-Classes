@@ -114,7 +114,7 @@ class Car {
         + Speaking should return a phrase `Hello my name is {name}, I am from {location}`.
         + {name} and {location} of course come from the instance's own properties.
 */
-console.log("Task 3: ");
+console.log("Task 3: (complete)");
 
 
 class Lambdasian {
@@ -149,7 +149,7 @@ class Lambdasian {
         + `demo` receives a `subject` string as an argument and returns the phrase 'Today we are learning about {subject}' where subject is the param passed in.
         + `grade` receives a `student` object and a `subject` string as arguments and returns '{student.name} receives a perfect score on {subject}'
 */
-console.log("Task 4: ");
+console.log("Task 4: (complete)");
 
 
 class Instructor extends Lambdasian{
@@ -164,6 +164,9 @@ class Instructor extends Lambdasian{
   }
   grade(student, subject){
     return `${student.name} receives a perfect score on ${subject}`;
+  }
+  gradeWork(student){
+    student.grade += ((Math.random()*10)-5);
   }
 }
 
@@ -182,7 +185,7 @@ class Instructor extends Lambdasian{
         + `PRAssignment` a method that receives a subject as an argument and returns `student.name has submitted a PR for {subject}`
         + `sprintChallenge` similar to PRAssignment but returns `student.name has begun sprint challenge on {subject}`
 */
-console.log("Task 5: ");
+console.log("Task 5: (complete)");
 
 
 class Student extends Lambdasian {
@@ -191,6 +194,7 @@ class Student extends Lambdasian {
     this.previousBackground = infoObject.previousBackground;
     this.className = infoObject.className;
     this.favSubjects = infoObject.favSubjects;
+    this.grade = infoObject.grade;
   }
   listSubjects(){
     return `Loving ${this.favSubjects}!`;
@@ -201,7 +205,14 @@ class Student extends Lambdasian {
   sprintChallenge(subject){
     return `${this.name} has begun spring challenge on ${subject}`;
   }
+  graduate() {
+    if (this.grade >= 70) {
+      return `Congrats, you graduated!`;
+    }
+  }
 }
+
+
 
 /*
   TASK 6
@@ -216,7 +227,7 @@ class Student extends Lambdasian {
         + `standUp` a method that takes in a slack channel and returns `{name} announces to {channel}, @channel standy times!`
         + `debugsCode` a method that takes in a student object and a subject and returns `{name} debugs {student.name}'s code on {subject}`
 */
-console.log("Task 6: ");
+console.log("Task 6: (complete)");
 
 
 class ProjectManager extends Instructor{
@@ -233,15 +244,30 @@ class ProjectManager extends Instructor{
   }
 }
 
+
 /*
   STRETCH PROBLEM (no tests!)
-    - Extend the functionality of the Student by adding a prop called grade and setting it equal to a number between 1-100.
+    - Extend the functionality of the Student by adding a prop called grade and setting it equal to a number between 1-100. X
     - Now that our students have a grade build out a method on the Instructor (this will be used by _BOTH_ instructors and PM's) that will randomly add or subtract points to a student's grade. _Math.random_ will help.
     - Add a graduate method to a student.
       + This method, when called, will check the grade of the student and see if they're ready to graduate from Lambda School
       + If the student's grade is above a 70% let them graduate! Otherwise go back to grading their assignments to increase their score.
 */
-console.log("Stretch Problem: ");
+
+
+const Shayne = new Student({
+  name: "Shayne",
+  age: 26,
+  location: "Nashville",
+  previousBackground: "Marathon runner",
+  favSubjects: "Economics",
+  className: "WEB30",
+  grade: 48
+});
+
+console.log(Shayne.graduate()); // undefined
+console.log(Shayne.listSubjects());
+
 
 ///////// END OF CHALLENGE /////////
 ///////// END OF CHALLENGE /////////
