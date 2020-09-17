@@ -39,11 +39,26 @@ class Airplane {
     - Give instances of Person a method `.toString()`:
         + It should return a string with `name` and `age`. Example: "Mary, 50"
 */
-console.log("Task 1: ");
+console.log("Task 1: (complete)");
 
 
 class Person {
-
+  constructor(name, age){
+    this.name = name;
+    this.age = age;
+    this.stomach = [];
+  }
+  eat(someFood){
+    if (this.stomach.length <10){
+      this.stomach.push(someFood);
+    }
+  }
+  poop(){
+    this.stomach = [];
+  }
+  toString(){
+    return `${this.name}, ${this.age}`;
+  }
 }
 
 /*
@@ -63,8 +78,27 @@ console.log("Task 2: ");
 
 
 class Car {
+  constructor(model, milesPerGallon){
+    this.model = model;
+    this.milesPerGallon = milesPerGallon;
+    this.tank = 0;
+    this.odometer = 0;
+  }
+  fill(gallons){
+    this.tank += gallons;
+  }
+  drive(distance){
+    if (this.tank <= distance/this.milesPerGallon){
+      this.tank = 0;
+      return `I ran out of fuel at ${this.odometer} miles!`
+    }
+    this.odometer += distance;
+    this.tank -= (distance/this.milesPerGallon);
 
+  }
 }
+
+
 
 /*
   TASK 3
