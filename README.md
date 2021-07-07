@@ -19,7 +19,7 @@ This challenge focuses on using the new for ES6 `class` syntax.
 1. Create a new branch by typing `git checkout -b <firstName-lastName>`.
 1. Install dependencies by typing `npm install`.
 1. Run tests by typing `npm run test:watch`.
-1. Work on your branch, push commits and create PR as usual.
+1. Work on your branch, push commits and create PR as usual.X
 
 ### Task 2a - MVP
 
